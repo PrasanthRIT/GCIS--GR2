@@ -43,11 +43,3 @@ def generate_sorted_data(size):
 
 print(generate_sorted_data(5))
 
-
-
-
-    # for i in range(1,len(array_a)):
-
-    #     while array_a[i]<array_a[i-1]:
-    #         array_a[i-1]=array_a[i]
-    #         array_a[i]=...
