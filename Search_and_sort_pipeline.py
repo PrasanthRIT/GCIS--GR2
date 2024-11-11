@@ -1,45 +1,60 @@
 import array
 import random
+
 def generate_sorted_data(size):
-    arr=array.array('i',[0]*size)
-    for i in range(len(arr)):
-        arr[i]=random.randint(1,100)
-    if size>999:
-        def merge_sort(arr):
-            if len(arr)>1:
-                left_arr=arr[:len(arr)//2]
-                right_arr=arr[len(arr)//2:]
 
-                merge_sort(left_arr)
-                merge_sort(right_arr)
+    #Phase 1
 
-                i=0
-                j=0
-                k=0
-
-                while i<len(left_arr) and j<len(right_arr):
-                    if left_arr[i]<right_arr[j]:
-                        arr[k]=left_arr[i]
-                        i+=1
-                    else:
-                        arr[k]=right_arr[j]
-                        j+=1
-                    k+=1
-                
-                while i<len(left_arr):
-                    arr[k]=left_arr[i]
-                    i+=1
-                    k+=1
-                while j<len(right_arr):
-                    arr[k]=right_arr[j]
-                    j+=1
-                    k+=1
+    # Create an array of 'size' with initial values set to 0
+    arr = array.array('i', [0] * size)
     
+    # Populate the array with random integers between 1 and 100
+    for i in range(size):
+        arr[i] = random.randint(1, 100)
+    
+    if len(size)<=999:
+        # Perform insertion sort on the generated array
+        for i in range(1, len(arr)):
+            key = arr[i]
+            j = i - 1
+            
+            # Shift elements of arr[0..i-1] that are greater than key, to one position ahead
+            while j >= 0 and arr[j] > key:
+                arr[j + 1] = arr[j]  # Move the element one position ahead
+                j -= 1               # Move to the next element on the left
+                
+            # Place the key in its correct sorted position
+            arr[j + 1] = key
 
-        
-
+    #Phase 3
+    else:
+        ...
+    
+    # Return the sorted array
     return arr
 
+#Phase 2
+# Binary search function
+def binary_search(sorted_array, target):
+    mid_index = len(sorted_array) // 2
 
-print(generate_sorted_data(5))
+    # Base case: if array is empty
+    if len(sorted_array) == 0:
+        return None
+
+    # If the middle element is the target, return the middle index
+    if sorted_array[mid_index] == target:
+        return mid_index
+
+    # If the target is less than the middle element, search the left half
+    elif sorted_array[mid_index] > target:
+        return binary_search(sorted_array[:mid_index], target)
+
+    # If the target is greater, search the right half
+    else:
+        result = binary_search(sorted_array[mid_index + 1:], target)
+        # Adjust index if found in the right half
+        if result == None:
+            return None
+        return mid_index + 1 + result
 
