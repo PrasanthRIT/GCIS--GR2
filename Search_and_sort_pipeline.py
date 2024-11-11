@@ -12,7 +12,7 @@ def generate_sorted_data(size):
     for i in range(size):
         arr[i] = random.randint(1, 100)
     
-    if len(size)<=999:
+    if size<=999:
         # Perform insertion sort on the generated array
         for i in range(1, len(arr)):
             key = arr[i]
@@ -28,7 +28,44 @@ def generate_sorted_data(size):
 
     #Phase 3
     else:
-        ...
+        def merge_sort(arr):
+            if len(arr) > 1:
+
+                ratio = 0.5  #50-50 split
+                split_index = int(len(arr) * ratio)
+                left_arr = arr[:split_index]
+                right_arr = arr[split_index:]
+                
+                merge_sort(left_arr)
+                merge_sort(right_arr)
+                
+
+                i=0
+                j=0
+
+                
+                for k in range(len(arr)):
+                    if i < len(left_arr) and j < len(right_arr):
+                        if left_arr[i] < right_arr[j]:
+                            arr[k] = left_arr[i]
+                            i += 1
+                        else:
+                            arr[k] = right_arr[j]
+                            j += 1
+
+                    
+                    elif i < len(left_arr):
+                        arr[k] = left_arr[i]
+                        i += 1
+
+                    else:
+                        arr[k] = right_arr[j]
+                        j += 1
+                    
+            return arr
+        
+        #implementing merge_sort
+        arr=merge_sort(arr)
     
     # Return the sorted array
     return arr
@@ -58,3 +95,4 @@ def binary_search(sorted_array, target):
             return None
         return mid_index + 1 + result
 
+print(generate_sorted_data(1000))
