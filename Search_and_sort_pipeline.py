@@ -1,5 +1,6 @@
 import array
 import random
+import time
 
 def generate_sorted_data(size):
 
@@ -95,4 +96,24 @@ def binary_search(sorted_array, target):
             return None
         return mid_index + 1 + result
 
-print(generate_sorted_data(1000))
+def linear_search(arr,target_value):
+    for i in range(len(arr)):
+        if arr[i]==target_value:
+            return i
+        else:
+            return None
+
+#Phase 4
+arr=generate_sorted_data(1000)
+
+start=time.perf_counter()
+linear_search(arr,72)
+end=time.perf_counter()
+elapsed_time=end-start
+print("Elapsed time for linear search:",elapsed_time)
+
+start=time.perf_counter()
+binary_search(arr,72)
+end=time.perf_counter()
+elapsed_time=end-start
+print("Elapsed time for Binary search:",elapsed_time)
