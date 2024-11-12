@@ -1,3 +1,10 @@
+"""This Python Program generates a custom array based on user's size and sorts it either by
+   Insertion sorting method
+   Recursive Merge Sorting method
+   Moreover, this program contains binary search to search for a target value for the user.
+   we then compare linear search and binary search efficiency through time module,specifically using the time.prefcounter()
+"""
+
 import array
 import random
 import time
@@ -43,22 +50,11 @@ def generate_sorted_data(size):
 
                 i=0
                 j=0
-
                 
                 for k in range(len(arr)):
-                    if i < len(left_arr) and j < len(right_arr):
-                        if left_arr[i] < right_arr[j]:
-                            arr[k] = left_arr[i]
-                            i += 1
-                        else:
-                            arr[k] = right_arr[j]
-                            j += 1
-
-                    
-                    elif i < len(left_arr):
+                    if i < len(left_arr) and (j >= len(right_arr) or left_arr[i] < right_arr[j]):
                         arr[k] = left_arr[i]
                         i += 1
-
                     else:
                         arr[k] = right_arr[j]
                         j += 1
@@ -76,22 +72,22 @@ def generate_sorted_data(size):
 def binary_search(sorted_array, target):
     mid_index = len(sorted_array) // 2
 
-    # Base case: if array is empty
+    # if array is empty
     if len(sorted_array) == 0:
         return None
 
-    # If the middle element is the target, return the middle index
+    # If the middle element is the target then return the middle index
     if sorted_array[mid_index] == target:
         return mid_index
 
-    # If the target is less than the middle element, search the left half
+    # If the target is less than the middle element then search the left half
     elif sorted_array[mid_index] > target:
         return binary_search(sorted_array[:mid_index], target)
 
-    # If the target is greater, search the right half
+    # If the target is bigger then search the right half
     else:
         result = binary_search(sorted_array[mid_index + 1:], target)
-        # Adjust index if found in the right half
+        # update the index if found in the right half
         if result == None:
             return None
         return mid_index + 1 + result
