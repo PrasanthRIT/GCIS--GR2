@@ -1,0 +1,7 @@
+The choice of sorting algorithm influences search performance by enabling faster search methods like binary search, 
+which works only on sorted data. Binary search, with O(logn) complexity, is far more efficient than linear search’s O(n) , 
+particularly for large datasets. Efficient sorting algorithms like Quick Sort and Merge Sort (both O(nlogn)) optimize the 
+initial sorting time, making frequent searches afterward faster. Investing in a fast sorting method initially results in 
+better overall performance, especially when many searches will follow.
+Binary search is faster because it narrows down the search by cutting the data in half instead of checking it one by one. 
+When the data is sorted first the binary search can find things in larger datasets much faster.

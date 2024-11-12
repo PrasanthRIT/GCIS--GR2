@@ -4,7 +4,7 @@
    Moreover, this program contains binary search to search for a target value for the user.
    we then compare linear search and binary search efficiency through time module,specifically using the time.prefcounter()
 """
-
+#importing libaries
 import array
 import random
 import time
@@ -37,10 +37,10 @@ def generate_sorted_data(size):
     #Phase 3
     else:
         def merge_sort(arr):
-            if len(arr) > 1:
+            if len(arr) > 1: #starts sorting only if length of array is greater than 1
 
                 ratio = 0.5  #50-50 split
-                split_index = int(len(arr) * ratio)
+                split_index = int(len(arr) * ratio) #int() rounds to the nearest integer, effectively finding the mid point
                 left_arr = arr[:split_index]
                 right_arr = arr[split_index:]
                 
@@ -48,15 +48,15 @@ def generate_sorted_data(size):
                 merge_sort(right_arr)
                 
 
-                i=0
-                j=0
+                i=0 #index of left array
+                j=0 #index of right array
                 
-                for k in range(len(arr)):
-                    if i < len(left_arr) and (j >= len(right_arr) or left_arr[i] < right_arr[j]):
-                        arr[k] = left_arr[i]
+                for k in range(len(arr)): # k is the index of the final array
+                    if i < len(left_arr) and (j >= len(right_arr) or left_arr[i] < right_arr[j]): #if length of right array is smaller or left_arr is less than right array and i less than length of left array
+                        arr[k] = left_arr[i] #placing value of left_Arr in K index of final array
                         i += 1
                     else:
-                        arr[k] = right_arr[j]
+                        arr[k] = right_arr[j] #placing value of right_Arr in K index of final array
                         j += 1
                     
             return arr
@@ -100,16 +100,20 @@ def linear_search(arr,target_value):
             return None
 
 #Phase 4
-arr=generate_sorted_data(1000)
+def main():
+    arr=generate_sorted_data(1000)
 
-start=time.perf_counter()
-linear_search(arr,72)
-end=time.perf_counter()
-elapsed_time=end-start
-print("Elapsed time for linear search:",elapsed_time)
+    start=time.perf_counter()
+    linear_search(arr,72)
+    end=time.perf_counter()
+    elapsed_time=end-start
+    print("Elapsed time for linear search:",elapsed_time)
 
-start=time.perf_counter()
-binary_search(arr,72)
-end=time.perf_counter()
-elapsed_time=end-start
-print("Elapsed time for Binary search:",elapsed_time)
+    start=time.perf_counter()
+    binary_search(arr,72)
+    end=time.perf_counter()
+    elapsed_time=end-start
+    print("Elapsed time for Binary search:",elapsed_time)
+
+if __name__=="__main__":
+    main()
