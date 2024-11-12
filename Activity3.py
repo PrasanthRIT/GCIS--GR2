@@ -26,32 +26,32 @@ def generate_sorted_data(size):
 def binary_search(sorted_array, target):
     mid_index = len(sorted_array) // 2
 
-    # Base case: if array is empty
+    # if array is empty
     if len(sorted_array) == 0:
         return None
 
-    # If the middle element is the target, return the middle index
+    # If the middle element is the target then return the middle index
     if sorted_array[mid_index] == target:
         return mid_index
 
-    # If the target is less than the middle element, search the left half
+    # If the target is less than the middle element then search the left half
     elif sorted_array[mid_index] > target:
         return binary_search(sorted_array[:mid_index], target)
 
-    # If the target is greater, search the right half
+    # If the target is bigger then search the right half
     else:
         result = binary_search(sorted_array[mid_index + 1:], target)
-        # Adjust index if found in the right half
+        # update the index if found in the right half
         if result == None:
             return None
         return mid_index + 1 + result
 
-# Generate and display sorted data
+#print sorted data
 sorted_data = generate_sorted_data(10)
 print("Sorted data:", sorted_data)
 
-# Test binary search with sample targets
-print("Index of target 29:", binary_search(sorted_data, 13))   # Expected output: index of 29 or None if not present
+# do binary search with target
+print("Index of target 29:", binary_search(sorted_data, 13))   # Expected output: index of 29 or None 
 print("Index of target 100:", binary_search(sorted_data, 24)) # Expected output: None
 
 
