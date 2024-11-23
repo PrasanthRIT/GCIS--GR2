@@ -1,5 +1,7 @@
 from polygon import Polygon
+from pytest import approx
 
+#Step1
 def test_polygon_intialized():
     Polygon1=Polygon('square',[2,2,2,2])
     Polygon2=Polygon('triangle',[3,3,3])
@@ -22,3 +24,11 @@ def test_polygon_intialized():
 
     assert [3,3,3,3]==Polygon1.get_sides()
     assert [2,2,2]==Polygon2.get_sides()
+
+#Step 4:
+def test_calculate_circumference():
+    Polygon1=Polygon('square',[2,2,2,2])
+    Polygon2=Polygon('triangle',[2.5,6,1.8])
+    
+    assert Polygon1.calc_circumference() == 8
+    assert approx(Polygon2.calc_circumference()) == 10.3
