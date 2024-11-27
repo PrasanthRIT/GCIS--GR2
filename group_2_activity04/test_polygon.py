@@ -25,6 +25,26 @@ def test_polygon_intialized():
     assert [3,3,3,3]==Polygon1.get_sides()
     assert [2,2,2]==Polygon2.get_sides()
 
+#Step 2
+def test_polygon_equality():
+    Polygon1=Polygon('square',[2,2,2,2])
+
+    Polygon3=Polygon('square',[2,2,2,2])
+
+    assert True == Polygon1._eq_(Polygon3)
+
+def test_polygon_inequality():
+    Polygon1=Polygon('square',[2,2,2,2])
+
+    Polygon2=Polygon('triangle',[3,3,3])
+
+    assert True == Polygon1._ne_(Polygon2)
+
+#Step 3
+def test_polygon_str():
+    Polygon1=Polygon('square',[2,2,2,2])
+    assert "square with sides:[2, 2, 2, 2]" == str(Polygon1)
+
 #Step 4:
 def test_calculate_circumference():
     Polygon1=Polygon('square',[2,2,2,2])

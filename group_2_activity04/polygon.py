@@ -22,6 +22,22 @@ class Polygon:
     #Set Sides for polygon
     def set_sides(self,sides):
         self.sides=sides
+    #Step2
+    def _eq_(self,other):
+        if self.name==other.name and self.sides==other.sides:
+            return True
+        else:
+            return False
+    
+    def _ne_(self,other):
+        if self._eq_(other):
+            return False
+        else:
+            return True
+        
+    #Step 3
+    def _str_(self):
+        return f"{self.name} with sides:{self.sides}"
     
     #Step 4
     def calc_circumference(self):
