@@ -23,20 +23,20 @@ class Polygon:
     def set_sides(self,sides):
         self.sides=sides
     #Step2
-    def _eq_(self,other):
+    def __eq__(self,other):
         if self.name==other.name and self.sides==other.sides:
             return True
         else:
             return False
     
-    def _ne_(self,other):
-        if self._eq_(other):
+    def __ne__(self,other):
+        if self.__eq__(other):
             return False
         else:
             return True
         
     #Step 3
-    def _str_(self):
+    def __str__(self):
         return f"{self.name} with sides:{self.sides}"
     
     #Step 4

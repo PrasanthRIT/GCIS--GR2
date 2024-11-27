@@ -31,14 +31,14 @@ def test_polygon_equality():
 
     Polygon3=Polygon('square',[2,2,2,2])
 
-    assert True == Polygon1._eq_(Polygon3)
+    assert True == Polygon1.__eq__(Polygon3)
 
 def test_polygon_inequality():
     Polygon1=Polygon('square',[2,2,2,2])
 
     Polygon2=Polygon('triangle',[3,3,3])
 
-    assert True == Polygon1._ne_(Polygon2)
+    assert True == Polygon1.__ne__(Polygon2)
 
 #Step 3
 def test_polygon_str():
